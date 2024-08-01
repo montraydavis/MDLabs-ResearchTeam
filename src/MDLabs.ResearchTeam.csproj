@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Handlebars.Net" Version="2.1.6" />
+    <PackageReference Include="ICSharpCode.Decompiler" Version="7.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="AutoGen" Version="0.0.16" />
+    <PackageReference Include="MediatR" Version="12.4.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0-preview.6.24327.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Agents\" />
+    <None Remove="Resources\" />
+    <None Remove="Resources\Prompts\" />
+    <None Remove="Resources\Prompts\Analysis\" />
+    <None Remove="Resources\Prompts\Documentation\" />
+    <None Remove="Resources\Prompts\Shared\" />
+    <None Remove="Resources\Prompts\Documentation\DocGen-Instruct.md" />
+    <None Remove="Resources\Prompts\Analysis\Analysis-Instruct.md" />
+    <None Remove="ProjectAnalysis\" />
+    <None Remove="Resources\Templates\DocGen\CSharpClassInfo.hbs" />
+    <None Remove="Resources\Prompts\Documentation\DocGen-MethodInstruct.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Agents\" />
+    <Folder Include="Mediation/" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Prompts\" />
+    <Folder Include="Resources\Prompts\Analysis\" />
+    <Folder Include="Resources\Prompts\Documentation\" />
+    <Folder Include="Resources\Prompts\Shared\" />
+    <Folder Include="ProjectAnalysis\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Prompts\Documentation\DocGen-Instruct.md" />
+    <EmbeddedResource Include="Resources\Prompts\Analysis\Analysis-Instruct.md" />
+    <EmbeddedResource Include="Resources\Templates\DocGen\CSharpClassInfo.hbs" />
+    <EmbeddedResource Include="Resources\Prompts\Documentation\DocGen-MethodInstruct.md" />
+  </ItemGroup>
+</Project>

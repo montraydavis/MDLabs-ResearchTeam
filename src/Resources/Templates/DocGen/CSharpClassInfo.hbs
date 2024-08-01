@@ -1,0 +1,25 @@
+# CSharp Class Documentation
+
+## {{Name}} {{#if ParentType}}: {{ParentType}} {{/if}}
+
+**Full Name**: {{FullName}}
+
+**Description**: {ClassDescription}
+
+
+{{#if MethodDefinitionInfos}}
+{{#each MethodDefinitionInfos}}
+
+### {{this.Name}}
+
+**Full Name**: {{this.MethodName}}
+
+**Description**: {MethodDescription}
+
+**Soure Code**: 
+```csharp
+{{this.SourceCode}}
+```
+
+{{/each}}
+{{/if}}

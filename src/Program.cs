@@ -37,13 +37,19 @@ public class Program
         builder.Services.AddSingleton<IAgent>(c => agent);
         builder.Services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssembly(typeof(MDLabsAssemblyEntyPoint).Assembly));
-            builder.Services.AddSingleton<EmbeddedResourceLoader>();
+        builder.Services.AddSingleton<EmbeddedResourceLoader>();
         builder.Services.AddSingleton<CSharpProjectAnalyzer>();
         builder.Services.AddSingleton<CSharpAnalysisAgent>();
         builder.Services.AddSingleton<CSharpDocumentationAgent>();
         builder.Services.AddSingleton<CSharpProcessingMediatR>();
         builder.Services.AddHostedService<Worker>();
+
+
         var host = builder.Build();
+
+        var embeddedResourceLoader = host.Services.GetRequiredService<EmbeddedResourceLoader>();
+        embeddedResourceLoader.LoadAllResources();
+
         host.Run();
     }
 }
